@@ -4,7 +4,8 @@ include "mcaSupport.dbd"
 include "dxpSupport.dbd"
 # Import file writers from areaDetector
 include "NDFileNetCDF.dbd"
-include "NDFileNexus.dbd"
+#include "NDFileNexus.dbd"
+include "NDFileHDF5.dbd"
 include "NDFileTIFF.dbd"
 include "NDFileHDF5.dbd"
 
