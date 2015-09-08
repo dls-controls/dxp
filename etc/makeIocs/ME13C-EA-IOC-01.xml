@@ -1,0 +1,44 @@
+<?xml version="1.0" ?>
+<components arch="win32-x86">
+	<dxp.DxpXmap BUFFERS="250" P="ME13C-EA-DET-01" name="XMAP"/>
+	<dxp.dxpDLS P="ME13C-EA-DET-01:" name="xmap"/>
+	<dxp.dxpSystem IO="@asyn(XMAP,0)" P="ME13C-EA-DET-01:"/>
+	<dxp.dxpMED DETALL="@asyn(XMAP,4,1)" P="ME13C-EA-DET-01:"/>
+	<dxp.dxpMapping IO="@asyn(XMAP,0)" P="ME13C-EA-DET-01:"/>
+	<dxp.dxpHighLevel IO="@asyn(XMAP,0,1)" N="1" P="ME13C-EA-DET-01:" R="DXP1:"/>
+	<dxp.dxpHighLevel IO="@asyn(XMAP,1,1)" N="2" P="ME13C-EA-DET-01:" R="DXP2:"/>
+	<dxp.dxpHighLevel IO="@asyn(XMAP,2,1)" N="3" P="ME13C-EA-DET-01:" R="DXP3:"/>
+	<dxp.dxpHighLevel IO="@asyn(XMAP,3,1)" N="4" P="ME13C-EA-DET-01:" R="DXP4:"/>
+	<dxp.dxpLowLevel IO="@asyn(XMAP,0,1)" P="ME13C-EA-DET-01:" R="DXP1:"/>
+	<dxp.dxpLowLevel IO="@asyn(XMAP,1,1)" P="ME13C-EA-DET-01:" R="DXP2:"/>
+	<dxp.dxpLowLevel IO="@asyn(XMAP,2,1)" P="ME13C-EA-DET-01:" R="DXP3:"/>
+	<dxp.dxpLowLevel IO="@asyn(XMAP,3,1)" P="ME13C-EA-DET-01:" R="DXP4:"/>
+	<dxp.dxpSCA_32 IO="@asyn(XMAP,0,1)" P="ME13C-EA-DET-01:" R="DXP1:"/>
+	<dxp.dxpSCA_32 IO="@asyn(XMAP,1,1)" P="ME13C-EA-DET-01:" R="DXP2:"/>
+	<dxp.dxpSCA_32 IO="@asyn(XMAP,2,1)" P="ME13C-EA-DET-01:" R="DXP3:"/>
+	<dxp.dxpSCA_32 IO="@asyn(XMAP,3,1)" P="ME13C-EA-DET-01:" R="DXP4:"/>
+	<mca.simple_mca_template CHANS="16384" DTYP="asynMCA" INP="@asyn(XMAP,0)" M="MCA1" P="ME13C-EA-DET-01:" PREC="2"/>
+	<mca.simple_mca_template CHANS="16384" DTYP="asynMCA" INP="@asyn(XMAP,1)" M="MCA2" P="ME13C-EA-DET-01:" PREC="2"/>
+	<mca.simple_mca_template CHANS="16384" DTYP="asynMCA" INP="@asyn(XMAP,2)" M="MCA3" P="ME13C-EA-DET-01:" PREC="2"/>
+	<mca.simple_mca_template CHANS="16384" DTYP="asynMCA" INP="@asyn(XMAP,3)" M="MCA4" P="ME13C-EA-DET-01:" PREC="2"/>
+	<dxp.dxpChannelDLS CHANS="16384" IO="@asyn(XMAP,0,1)" M="MCA1" N="1" P="ME13C-EA-DET-01:"/>
+	<dxp.dxpChannelDLS CHANS="16384" IO="@asyn(XMAP,1,1)" M="MCA2" N="2" P="ME13C-EA-DET-01:"/>
+	<dxp.dxpChannelDLS CHANS="16384" IO="@asyn(XMAP,2,1)" M="MCA3" N="3" P="ME13C-EA-DET-01:"/>
+	<dxp.dxpChannelDLS CHANS="16384" IO="@asyn(XMAP,3,1)" M="MCA4" N="4" P="ME13C-EA-DET-01:"/>
+	<dxp.XmapBufferPlugin ADDR="0" BUFFERS="10000" Enabled="1" NDARRAY_ADDR="0" NDARRAY_PORT="XMAP" P="ME13C-EA-DET-01" PORT="XBUF" QUEUE="250" R=":XBUF:" TIMEOUT="1"/>
+	<areaDetector.NDFileHDF5 ADDR="0" Enabled="1" NDARRAY_ADDR="0" NDARRAY_PORT="XBUF" P="ME13C-EA-DET-01" PORT="HDF5" QUEUE="10000" R=":HDF:" TIMEOUT="1"/>
+	<EPICS_BASE.dbpf pv="ME13C-EA-DET-01:HDF:FileTemplate" value="%s/%s_%04d.h5"/>
+	<EPICS_BASE.dbpf pv="ME13C-EA-DET-01:HDF:FileWriteMode" value="Stream"/>
+	<EPICS_BASE.dbpf pv="ME13C-EA-DET-01:HDF:LazyOpen" value="Yes"/>
+	<EPICS_BASE.dbpf pv="ME13C-EA-DET-01:XBUF:EnableCallbacks" value="Enable"/>
+	<EPICS_BASE.StartupCommand at_end="True" command="# In a HDF5 or XmapBuffer plugin debug session enable this before switching on ASYN trace flow." post_init="True"/>
+	<EPICS_BASE.StartupCommand at_end="True" command="# It will disable unecessary chatter due to polling" post_init="True"/>
+	<EPICS_BASE.StartupCommand at_end="True" command="#dbpf(&quot;ME13C-EA-DET-01:HDF:PoolUsedMem.SCAN&quot;, &quot;Passive&quot;)" post_init="True"/>
+	<EPICS_BASE.StartupCommand at_end="True" command="#dbpf(&quot;ME13C-EA-DET-01:XBUF:PoolUsedMem.SCAN&quot;, &quot;Passive&quot;)" post_init="True"/>
+	<EPICS_BASE.StartupCommand at_end="True" command="# Enable asyn error trace for driver and plugins" post_init="True"/>
+	<EPICS_BASE.StartupCommand at_end="True" command="asynSetTraceMask(&quot;XMAP&quot;, 0, 0x1)" post_init="True"/>
+	<EPICS_BASE.StartupCommand at_end="True" command="asynSetTraceMask(&quot;XBUF&quot;, 0, 0x1)" post_init="True"/>
+	<EPICS_BASE.StartupCommand at_end="True" command="asynSetTraceMask(&quot;HDF5&quot;, 0, 0x1)" post_init="True"/>
+	<asyn.auto_asynRecord ADDR="0" IMAX="80" OMAX="80" P="ME13C-EA-DET-01:" PORT="XMAP" R="Asyn"/>
+	<EPICS_BASE.EpicsEnvSet key="EPICS_CA_MAX_ARRAY_BYTES" name="EPICS_CA_MAX_ARRAY_BYTES" value="6000000"/>
+</components>
