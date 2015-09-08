@@ -1,6 +1,7 @@
 # Author:  Mark Rivers
 # Database for DXP multi-element detector (e.g. xMAP or DXP4C2X)
-
+# % macro, P, device prefix
+# % macro, DETALL, xmap asyn adress
 record(bi,"$(P)SNL_Connected") {
     field(ZNAM,"Not connected")
     field(ZSV, "MAJOR")
@@ -57,6 +58,7 @@ record(bo,"$(P)StopAll") {
     field(ONAM,"Stop")
 }
 
+# % gdatag,mbbinary,rw,xmap_dxp,SETPRESETTYPE,set the preset acquisition type for all channels
 record(mbbo, "$(P)PresetMode") {
     field(DESC, "set preset type")
     field(ZRVL, "0")
@@ -87,6 +89,7 @@ record(longout, "$(P)PresetEvents") {
     field(DESC, "Preset events")
 }
 
+# %gdatag,binary,ro,xmap_dxp,ACQUIRING,system acquire status
 record(bi,"$(P)Acquiring") {
     field(SCAN,"I/O Intr")
     field(DTYP, "asynInt32")

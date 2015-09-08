@@ -1,4 +1,6 @@
 # Status polling rate (and data readout speed in normal/mca mode)
+# % macro, P, device prefix
+# % macro, IO, xmap asyn address
 record(ao, "$(P)PollTime") {
     field(PINI, "YES")
     field(DTYP, "asynFloat64")

@@ -1,3 +1,7 @@
+#% macro, P, device prefix
+#% macro, R, device suffix
+#% macro, IO, xmap asyn address
+
 record(bo, "$(P)$(R)ReadLLParams") {
   field(PINI, "NO")
   field(DESC, "Read low-level params")

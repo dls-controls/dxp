@@ -1,5 +1,7 @@
 # Redefine the TraceMode choices, eliminating all but the first 2  
 # dxpHighLevel.template is for the xMAP.  Must load this file after that one.
+# % macro, P, device prefix
+# % macro, R, device suffix
 record(mbbo, "$(P)$(R)TraceMode") {
     field(TWST, "")
     field(THST, "")

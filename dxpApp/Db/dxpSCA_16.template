@@ -1,3 +1,7 @@
+#% macro, P, device prefix
+#% macro, R, device suffix
+#% macro, IO, xmap asyn address
+
 record(longout, "$(P)$(R)SCA0Low") {
     field(PINI, "YES")
     field(DTYP, "asynInt32")

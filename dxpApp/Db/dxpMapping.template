@@ -1,3 +1,6 @@
+# % macro, P, device prefix
+# % macro, IO, xmap asyn address
+
 record(mbbo, "$(P)CollectMode") {
   field(DESC, "Mode select")
   field(DTYP, "asynInt32")

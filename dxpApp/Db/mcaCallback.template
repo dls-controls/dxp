@@ -1,4 +1,7 @@
 # This database is used with mca.db for drivers that can issue callbacks when acquisition completes
+# % macro, P, device prefix
+# % macro, R, device suffix
+# % macro, IO, xmap asyn address
 record(ai,"$(P)$(R)ReadCallback") {
        field(SCAN,"I/O Intr")
        field(DTYP, "asynInt32")
