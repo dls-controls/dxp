@@ -13,6 +13,7 @@ include $(TOP)/configure/CONFIG
 #DB += dbExample1.db
 #DB += dbExample2.db
 #DB += dbSubExample.db
+DB += $(patsubst ../%, %, $(wildcard ../*.template))
 
 #----------------------------------------------------
 # If <anyname>.db template is not named <anyname>*.template add
