@@ -3,8 +3,8 @@ beginScreenProperties
 major 4
 minor 0
 release 1
-x 169
-y 308
+x 28
+y 213
 w 1645
 h 822
 font "arial-medium-r-14.0"
@@ -13330,25 +13330,6 @@ useEnumNumeric
 font "arial-medium-r-12.0"
 endObjectProperties
 
-# (Textentry)
-object TextentryClass
-beginObjectProperties
-major 10
-minor 0
-release 0
-x 505
-y 795
-w 585
-h 20
-controlPv "$(P)SaveSystemFile"
-fgColor index 25
-fgAlarm
-bgColor index 10
-fill
-font "arial-medium-r-12.0"
-fontAlign "center"
-endObjectProperties
-
 # (Message Button)
 object activeMessageButtonClass
 beginObjectProperties
@@ -13411,5 +13392,31 @@ useDisplayBg
 value {
   "System Settings:"
 }
+endObjectProperties
+
+# (Text Control)
+object activeXTextDspClass
+beginObjectProperties
+major 4
+minor 5
+release 0
+x 510
+y 795
+w 580
+h 20
+controlPv "$(P)SaveSystemFile"
+font "helvetica-medium-r-12.0"
+fgColor index 25
+bgColor index 3
+editable
+motifWidget
+limitsFromDb
+nullColor index 0
+useKp
+file
+useHexPrefix
+newPos
+inputFocusUpdates
+objType "controls"
 endObjectProperties
 

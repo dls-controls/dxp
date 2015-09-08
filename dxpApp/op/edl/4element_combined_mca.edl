@@ -3,8 +3,8 @@ beginScreenProperties
 major 4
 minor 0
 release 1
-x 21
-y 533
+x 332
+y 190
 w 871
 h 571
 font "arial-medium-r-12.0"
@@ -74,6 +74,12 @@ yPv {
   1 "$(P)$(MCA)$(DETB).VAL"
   2 "$(P)$(MCA)$(DETC).VAL"
   3 "$(P)$(MCA)$(DETD).VAL"
+}
+plotUpdateMode {
+  0 "xOrY"
+  1 "xOrY"
+  2 "xOrY"
+  3 "xOrY"
 }
 plotColor {
   0 index 15
