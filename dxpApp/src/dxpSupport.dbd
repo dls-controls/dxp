@@ -3,3 +3,4 @@
 ################
 registrar(NDDxpRegister)
 registrar(dxpMEDRegistrar) 
+registrar(XmapBufferRegister)
