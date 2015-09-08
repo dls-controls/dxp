@@ -20,7 +20,7 @@ endif
 
 DBD += dxpSupport.dbd
 DBD += dxp.dbd
-DBD += dxpVX.dbd
+DBD_vxWorks += dxpVX.dbd
 
 USR_CFLAGS += -DXIA_SPECIAL_MEM
 USR_CFLAGS += -DEXCLUDE_DGFG200
@@ -33,6 +33,8 @@ USR_CPPFLAGS_Linux += -Wno-write-strings
 # The following are compiled and added to the Support library
 dxp_SRCS += NDDxp.cpp
 dxp_SRCS += dxpMED.st
+dxp_SRCS += xmap_buffer.cpp
+dxp_SRCS += xmap_buffer_plugin.cpp
 
 dxp_LIBS += handel
 dxp_LIBS += asyn
@@ -98,6 +100,19 @@ dxpApp_SYS_LIBS_WIN32    += setupapi
 #test_scas3_SYS_LIBS_WIN32 += setupapi
 #PROD_IOC += test_sscanf
 #test_sscanf_SRCS += test_sscanf.c
+
+PROD_IOC+=test_trace
+test_trace_SRCS += test_trace.c
+test_trace_LIBS += dxp handel asyn $(EPICS_BASE_LIBS)
+test_trace_LIBS_WIN32 += DLPORTIO PlxApi
+test_trace_SYS_LIBS_WIN32 += setupapi 
+ifeq ($(LINUX_USB_INSTALLED), YES)
+test_trace_SYS_LIBS_Linux += usb
+endif
+
+PROD_IOC_Linux+=test_xmap_buffer
+test_xmap_buffer_SRCS += test_xmap_buffer.cpp
+test_xmap_buffer_LIBS += dxp
 
 #===========================
 # Build application that lets other apps run with iopl(3)
