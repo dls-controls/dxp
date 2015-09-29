@@ -2,14 +2,14 @@ import xml.dom.minidom
 from iocbuilder import Substitution, AutoSubstitution, SetSimulation, Device, records, Architecture, IocDataStream
 from iocbuilder.arginfo import *
 from iocbuilder.modules.asyn import Asyn, AsynPort, AsynIP
-from iocbuilder.modules.areaDetector import AreaDetector, _NDPluginProducerBase
+from iocbuilder.modules.ADCore import ADCore, NDPluginBaseTemplate, makeTemplateInstance, includesTemplates
 from iocbuilder.modules.mca import Mca
 from iocbuilder.modules.seq import Seq
 
 __all__ = ['Dxp']
 
 class Dxp(Device):
-    Dependencies = (AreaDetector, Seq)
+    Dependencies = (ADCore, Seq)
     LibFileList = ['dxp', 'handel']
     if Architecture() == "win32-x86":
         LibFileList += ['DLPORTIO', 'PlxApi']
@@ -61,25 +61,34 @@ class DxpXmap(AsynPort):
         print 'dbpf("%(P)s:AutoPixelsPerBuffer.PROC", "1")' % self.__dict__
 
 
-class XmapBufferTemplate:
-    """Dummy class to satisfy the template requirements..."""
-    TemplateFile = "XmapBuffer"
-    ArgInfo = makeArgInfo()
-    args = []
- 
-class XmapBufferPlugin(_NDPluginProducerBase):
+class XmapBufferPlugin(AsynPort):
     """This plugin parses XMAP mapping buffers and output a series of NDArrays of [spectra,channel]
     It also attach all the XMAP scalar data parameters as NDAttributes to the output arrays"""
     Dependencies = (Mca, Dxp)
-    _SpecificTemplate = XmapBufferTemplate
-    def __init__(self, **args):
-        self.__super.__init__(**args)
+    # This tells xmlbuilder to use PORT instead of name as the row ID
+    UniqueName = "PORT"
+    _SpecificTemplate = NDPluginBaseTemplate
+    def __init__(self, PORT, NDARRAY_PORT, QUEUE = 2, BLOCK = 0, NDARRAY_ADDR = 0, BUFFERS = 0, **args):
+        # Init the superclass (AsynPort)
+        self.__super.__init__(PORT)
+        # Update the attributes of self from the commandline args
+        self.__dict__.update(locals())
+        # Make an instance of our template
+        makeTemplateInstance(self._SpecificTemplate, locals(), args)
+
+    # __init__ arguments
+    ArgInfo = _SpecificTemplate.ArgInfo + makeArgInfo(__init__,
+        PORT = Simple('Port name for the NDStdArrays plugin', str),
+        QUEUE = Simple('Input array queue size', int),
+        BLOCK = Simple('Blocking callbacks?', int),
+        NDARRAY_PORT = Ident('Input array port', AsynPort),
+        NDARRAY_ADDR = Simple('Input array port address', int),
+        BUFFERS = Simple('Max number of buffers to allocate', int))
 
     def Initialise(self):
-        print '# %(Configure)s(portName, queueSize, '\
-            'NDArrayPort, NDArrayAddr, maxBuffers, ' % self.__dict__
-        print '%(Configure)s("%(PORT)s", %(QUEUE)d, ' \
-            '"%(NDARRAY_PORT)s", %(NDARRAY_ADDR)s, %(BUFFERS)d, ' % self.__dict__
+        print '# XmapBufferConfigure(portName, queueSize, NDArrayPort, NDArrayAddr, maxBuffers)' % self.__dict__
+        print 'XmapBufferConfigure("%(PORT)s", %(QUEUE)d, "%(NDARRAY_PORT)s", %(NDARRAY_ADDR)s, %(BUFFERS)d)' % self.__dict__
+
 
 class dxpDLS(AutoSubstitution):
     # Substitution attributes
