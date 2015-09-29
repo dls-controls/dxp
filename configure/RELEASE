@@ -9,16 +9,16 @@ TEMPLATE_TOP=$(EPICS_BASE)/templates/makeBaseApp/top
 #INSTALL_LOCATION_APP=<fullpathname>
 
 SUPPORT=/dls_sw/prod/R3.14.12.3/support
-WORK=/dls_sw/work/R3.14.12.3/support
+#WORK=/dls_sw/work/R3.14.12.3/support
 
 #If using the sequencer, point SNCSEQ at its top directory:
 SNCSEQ=$(SUPPORT)/seq/2-2-2
 
 ASYN=$(SUPPORT)/asyn/4-26
-ADCORE=$(WORK)/mapping/ADCore
-AREA_DETECTOR=$(WORK)/mapping/ADCore
-ADBINARIES=$(WORK)/mapping/ADBinaries
-MCA=$(WORK)/mapping/mca
+ADCORE=$(SUPPORT)/ADCore/2-3dls1
+AREA_DETECTOR=$(SUPPORT)
+ADBINARIES=$(SUPPORT)/ADBinaries/2-2dls2
+MCA=$(SUPPORT)/mca/7-6dls1
 
 # The following are needed only to support the ioc
 CALC=$(SUPPORT)/calc/3-1
