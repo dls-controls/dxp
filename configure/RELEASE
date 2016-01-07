@@ -15,10 +15,10 @@ SUPPORT=/dls_sw/prod/R3.14.12.3/support
 SNCSEQ=$(SUPPORT)/seq/2-2-2
 
 ASYN=$(SUPPORT)/asyn/4-26
-ADCORE=$(SUPPORT)/ADCore/2-3dls3
+ADCORE=$(SUPPORT)/ADCore/2-3dls5
 AREA_DETECTOR=$(SUPPORT)
 ADBINARIES=$(SUPPORT)/ADBinaries/2-2dls2
-MCA=$(SUPPORT)/mca/7-6dls1
+MCA=$(SUPPORT)/mca/7-6dls2
 
 # The following are needed only to support the ioc
 CALC=$(SUPPORT)/calc/3-1
