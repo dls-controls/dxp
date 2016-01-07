@@ -12,9 +12,6 @@
 # This associates the template with an edm screen
 # % gui, $(name=), edm, dxp.edl, P=$(P),MCA=$(MCA=MCA),DXP=$(DXP=DXP),N=$(N=4)
 
-# All tags starting with gdatag are DLS specific for GDA
-# % gdatag, template, dxp, xmap_dxp, xmap dxp class instance
-
 record(busy, "$(P)DLSBUSY") {
 }
 
@@ -35,7 +32,6 @@ record(calcout, "$(P)DLSCLEARBUSY") {
   field(DOPT, "Use CALC")
 }
 
-# % gdatag, binary, rw, xmap_dxp, ACQUIRE, start or stop system
 record(bo, "$(P)Acquire") {
   field(DTYP, "Soft Channel")
   field(ZNAM, "0")
@@ -45,7 +41,6 @@ record(bo, "$(P)Acquire") {
   field(OUT, "$(P)DLSBUSY PP")
 }
 
-# % gdatag,binary,rw,xmap_dxp,SETRESUME,Set resume mode. Clear on start or resume acquiring into same spectrum.
 record(mbbo, "$(P)Resume") {
   field(PINI, "YES")
   field(DTYP, "Soft Channel")
@@ -55,7 +50,6 @@ record(mbbo, "$(P)Resume") {
   field(ONST, "resume")
 }
 
-# %gdatag,pv,rw,xmap_dxp,SETPRESETVALUE,set the preset acquisition value for all channels
 record(ao, "$(P)PresetValue") {
   field(DTYP, "Soft Channel")
   field(FLNK, "$(P)SetPresetValue")

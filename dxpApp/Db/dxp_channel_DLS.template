@@ -3,7 +3,6 @@
 # % macro, IO, xmap asyn address
 # % macro, CHANS, Number of elements in waveform
 # % macro, N, Number of detector channels in system (only for GUI purpose)
-# % gdatag,array,ro,xmap_dxp,ENERGYBINS$(N),spectrum x-axis
 record(waveform, "$(P)$(M):XAXIS") {
     field(DTYP, "asynFloat64ArrayIn")
     field(INP, "$(IO)DxpSpectrumXAxis")
@@ -19,11 +18,4 @@ record(longin, "$(P)$(M):NBINS") {
     field(INP, "$(IO)MCA_NUM_CHANNELS")
     field(SCAN, "I/O Intr")
 }
-
-####  GDA tags for all the MCA records #########
-# % gdatag, mca, rw, xmap_dxp, MCA$(N), XMAP MCA data record, $(P)$(M)
-#### GDA tags for data of all individual channels through the MCA record #####
-# % gdatag, array, ro, xmap_dxp, DATA$(N), XMAP MCA spectrum data, $(P)$(M).VAL
-#### GDA tags for status of all individual channels through the MCA record #####
-# % gdatag, pv, ro, xmap_dxp, RUNSTATE$(N), current acquisition state, $(P)$(M).ACQG
 

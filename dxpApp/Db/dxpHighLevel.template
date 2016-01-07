@@ -71,7 +71,6 @@ record(longin, "$(P)$(R)PresetEvents_RBV") {
     field(SCAN, "I/O Intr")
 }
 
-# % gdatag,pv,rw,xmap_dxp,SETPEAKTIME$(N),Peaking time of the energy filter
 record(ao, "$(P)$(R)PeakingTime") {
     field(PINI, "YES")
     field(VAL,  "1.0")
@@ -81,7 +80,6 @@ record(ao, "$(P)$(R)PeakingTime") {
     field(EGU, "us")
 }
 
-# % gdatag,pv,ro,xmap_dxp,GETPEAKTIME$(N),Peaking time of the energy filter
 record(ai, "$(P)$(R)PeakingTime_RBV") {
     field(DTYP, "asynFloat64")
     field(INP, "$(IO)DxpPeakingTime")
@@ -91,7 +89,6 @@ record(ai, "$(P)$(R)PeakingTime_RBV") {
 }
 
 # We only read dynamic range, we set ADC percent rule at EMAX/2
-# % gdatag,pv,ro,xmap_dxp,GETDYNRANGE$(N),Energy range corresponding to 40% of the total ADC range
 record(ai, "$(P)$(R)DynamicRange_RBV") {
     field(DTYP, "asynFloat64")
     field(INP, "$(IO)DxpDynamicRange")
@@ -100,7 +97,6 @@ record(ai, "$(P)$(R)DynamicRange_RBV") {
     field(SCAN, "I/O Intr")
 }
 
-# % gdatag,pv,rw,xmap_dxp,SETTRIGTHRESH$(N),Trigger filter threshold
 record(ao, "$(P)$(R)TriggerThreshold") {
     field(PINI, "YES")
     field(VAL,  "0.15")
@@ -110,7 +106,6 @@ record(ao, "$(P)$(R)TriggerThreshold") {
     field(EGU, "keV")
 }
 
-# % gdatag,pv,ro,xmap_dxp,GETTRIGTHRESH$(N),Trigger filter threshold
 record(ai, "$(P)$(R)TriggerThreshold_RBV") {
     field(DTYP, "asynFloat64")
     field(INP, "$(IO)DxpTriggerThreshold")
@@ -119,7 +114,6 @@ record(ai, "$(P)$(R)TriggerThreshold_RBV") {
     field(SCAN, "I/O Intr")
 }
 
-# % gdatag,pv,rw,xmap_dxp,SETBASETHRESH$(N),Baseline filter threshold
 record(ao, "$(P)$(R)BaselineThreshold") {
     field(PINI, "YES")
     field(VAL,  "2.0")
@@ -129,7 +123,6 @@ record(ao, "$(P)$(R)BaselineThreshold") {
     field(EGU, "keV")
 }
 
-# % gdatag,pv,ro,xmap_dxp,GETBASETHRESH$(N),Baseline filter threshold
 record(ai, "$(P)$(R)BaselineThreshold_RBV") {
     field(DTYP, "asynFloat64")
     field(INP, "$(IO)DxpBaselineThreshold")
@@ -172,7 +165,6 @@ record(bi, "$(P)$(R)BaselineCutEnable_RBV") {
     field(SCAN, "I/O Intr")
 }
 
-# %gdatag,mbbinary,rw,xmap_dxp,SETBASELENGTH$(N),"Set the number of samples averaged in the baseline filter, specified as number of samples"
 record(mbbo, "$(P)$(R)BaselineFilterLength") {
     field(PINI, "YES")
     field(DESC, "baseline filter len")
@@ -199,7 +191,6 @@ record(mbbo, "$(P)$(R)BaselineFilterLength") {
     field(IVOA, "Don't drive outputs")
 }
 
-# %gdatag,pv,ro,xmap_dxp,GETBASELENGTH$(N),"Get the number of samples averaged in the baseline filter, specified as number of samples"
 record(longin, "$(P)$(R)BaselineFilterLength_RBV") {
     field(DESC, "baseline filter len")
     field(DTYP, "asynInt32")
@@ -207,7 +198,6 @@ record(longin, "$(P)$(R)BaselineFilterLength_RBV") {
     field(SCAN, "I/O Intr")
 }
 
-# %gdatag,pv,rw,xmap_dxp,SETENERGYTHRESH$(N),Get the energy filter threshold
 record(ao, "$(P)$(R)EnergyThreshold") {
     field(PINI, "YES")
     field(VAL,  "0.0")
@@ -217,7 +207,6 @@ record(ao, "$(P)$(R)EnergyThreshold") {
     field(EGU, "keV")
 }
 
-# %gdatag,pv,ro,xmap_dxp,GETENERGYTHRESH$(N),Set the energy filter threshold
 record(ai, "$(P)$(R)EnergyThreshold_RBV") {
     field(DTYP, "asynFloat64")
     field(INP, "$(IO)DxpEnergyThreshold")
@@ -304,7 +293,6 @@ record(ai, "$(P)$(R)CalibrationEnergy_RBV") {
     field(SCAN, "I/O Intr")
 }
 
-# % gdatag,pv,rw,xmap_dxp,SETADCPERCENT$(N), Set the ADC % rule
 record(ao, "$(P)$(R)ADCPercentRule") {
     field(PINI, "YES")
     field(VAL,  "5.0")
@@ -314,7 +302,6 @@ record(ao, "$(P)$(R)ADCPercentRule") {
     field(EGU, "%")
 }
 
-# % gdatag,pv,ro,xmap_dxp,GETADCPERCENT$(N), Get the ADC % rule
 record(ai, "$(P)$(R)ADCPercentRule_RBV") {
     field(DTYP, "asynFloat64")
     field(INP, "$(IO)DxpADCPercentRule")
@@ -334,7 +321,6 @@ record(ai, "$(P)$(R)ADCPercentRule_RBV") {
 #    field(EGU, "eV/bin")
 #}
 
-# %gdatag,pv,ro,xmap_dxp,GETBINWIDTH$(N),Width of the individual bin in the MCA spectrum
 record(ai, "$(P)$(R)MCABinWidth_RBV") {
     field(DTYP, "asynFloat64")
     field(INP, "$(IO)DxpMcaBinWidth")
@@ -343,7 +329,6 @@ record(ai, "$(P)$(R)MCABinWidth_RBV") {
     field(SCAN, "I/O Intr")
 }
 
-# % gdatag,pv,rw,xmap_dxp,SETMAXENERGY$(N),Set the maximum energy for the spectrum
 record(ao, "$(P)$(R)MaxEnergy") {
     field(PINI, "YES")
     field(VAL,  "20.0")
@@ -353,7 +338,6 @@ record(ao, "$(P)$(R)MaxEnergy") {
     field(EGU, "keV")
 }
 
-# % gdatag,pv,ro,xmap_dxp,GETMAXENERGY$(N),Get the maximum energy for the spectrum
 record(ai, "$(P)$(R)MaxEnergy_RBV") {
     field(DTYP, "asynFloat64")
     field(INP, "$(IO)DxpMaxEnergy")
@@ -362,7 +346,6 @@ record(ai, "$(P)$(R)MaxEnergy_RBV") {
     field(SCAN, "I/O Intr")
 }
 
-# % gdatag,pv,rw,xmap_dxp,SETPREAMPGAIN$(N),Preamplifier gain value
 record(ao, "$(P)$(R)PreampGain") {
     field(PINI, "YES")
     field(VAL,  "2.0")
@@ -372,7 +355,6 @@ record(ao, "$(P)$(R)PreampGain") {
     field(EGU, "mV/keV")
 }
 
-# % gdatag,pv,ro,xmap_dxp,GETPREAMPGAIN$(N),Preamplifier gain value
 record(ai, "$(P)$(R)PreampGain_RBV") {
     field(DTYP, "asynFloat64")
     field(INP, "$(IO)DxpPreampGain")
@@ -398,7 +380,6 @@ record(bi, "$(P)$(R)DetectorPolarity_RBV") {
     field(SCAN, "I/O Intr")
 }
 
-# % gdatag,pv,rw,xmap_dxp,SETRESETDELAY$(N),The time the processor should wait after the detector resets before continuing processing of the input signal
 record(ao, "$(P)$(R)ResetDelay") {
     field(PINI, "YES")
     field(VAL,  "10.0")
@@ -408,7 +389,6 @@ record(ao, "$(P)$(R)ResetDelay") {
     field(EGU, "us")
 }
 
-# %gdatag,pv,ro,xmap_dxp,GETRESETDELAY$(N),The time the processor should wait after the detector resets before continuing processing of the input signal
 record(ai, "$(P)$(R)ResetDelay_RBV") {
     field(DTYP, "asynFloat64")
     field(INP, "$(IO)DxpResetDelay")
@@ -434,7 +414,6 @@ record(ai, "$(P)$(R)DecayTime_RBV") {
     field(SCAN, "I/O Intr")
 }
 
-# % gdatag,pv,rw,xmap_dxp,SETGAPTIME$(N),The gap time of the energy filter. This only sets the minimum gaptime
 record(ao, "$(P)$(R)GapTime") {
     field(PINI, "YES")
     field(VAL,  "0.2")
@@ -444,7 +423,6 @@ record(ao, "$(P)$(R)GapTime") {
     field(EGU, "us")
 }
 
-# % gdatag,pv,ro,xmap_dxp,GETGAPTIME$(N),The gap time of the energy filter. This only sets the minimum gaptime
 record(ai, "$(P)$(R)GapTime_RBV") {
     field(DTYP, "asynFloat64")
     field(INP, "$(IO)DxpGapTime")
@@ -453,7 +431,6 @@ record(ai, "$(P)$(R)GapTime_RBV") {
     field(SCAN, "I/O Intr")
 }
 
-# % gdatag,pv,rw,xmap_dxp,SETTRIGPEAKTIME$(N),The peaking time of the trigger filter
 record(ao, "$(P)$(R)TriggerPeakingTime") {
     field(PINI, "YES")
     field(VAL,  "0.15")
@@ -463,7 +440,6 @@ record(ao, "$(P)$(R)TriggerPeakingTime") {
     field(EGU, "us")
 }
 
-# % gdatag,pv,ro,xmap_dxp,GETTRIGPEAKTIME$(N),The peaking time of the trigger filter
 record(ai, "$(P)$(R)TriggerPeakingTime_RBV") {
     field(DTYP, "asynFloat64")
     field(INP, "$(IO)DxpTriggerPeakingTime")
@@ -472,7 +448,6 @@ record(ai, "$(P)$(R)TriggerPeakingTime_RBV") {
     field(SCAN, "I/O Intr")
 }
 
-# % gdatag,pv,rw,xmap_dxp,SETTRIGGAPTIME$(N),The gap time of the trigger filter
 record(ao, "$(P)$(R)TriggerGapTime") {
     field(PINI, "YES")
     field(VAL,  "0.0")
@@ -482,7 +457,6 @@ record(ao, "$(P)$(R)TriggerGapTime") {
     field(EGU, "us")
 }
 
-# % gdatag,pv,ro,xmap_dxp,GETTRIGGAPTIME$(N),The gap time of the trigger filter
 record(ai, "$(P)$(R)TriggerGapTime_RBV") {
     field(DTYP, "asynFloat64")
     field(INP, "$(IO)DxpTriggerGapTime")
@@ -491,7 +465,6 @@ record(ai, "$(P)$(R)TriggerGapTime_RBV") {
     field(SCAN, "I/O Intr")
 }
 
-# % gdatag,pv,rw,xmap_dxp,SETMAXWIDTH$(N),The maximum peak width for pile-up inspection
 record(ao, "$(P)$(R)MaxWidth") {
     field(PINI, "YES")
     field(VAL,  "4.0")
@@ -501,7 +474,6 @@ record(ao, "$(P)$(R)MaxWidth") {
     field(EGU, "us")
 }
 
-# % gdatag,pv,ro,xmap_dxp,GETMAXWIDTH$(N),The maximum peak width for pile-up inspection
 record(ai, "$(P)$(R)MaxWidth_RBV") {
     field(DTYP, "asynFloat64")
     field(INP, "$(IO)DxpMaxWidth")
@@ -614,7 +586,6 @@ record(waveform, "$(P)$(R)BaselineEnergyArray") {
 }
 
 # This is really redundant with the MCA_ELAPSED_REAL parameter
-# % gdatag,pv,ro,xmap_dxp,REALTIME$(N),channel aquisition time
 record(ai, "$(P)$(R)ElapsedRealTime") {
     field(DTYP, "asynFloat64")
     field(INP, "$(IO)MCA_ELAPSED_REAL")
@@ -622,7 +593,6 @@ record(ai, "$(P)$(R)ElapsedRealTime") {
     field(SCAN, "I/O Intr")
 }
 
-# % gdatag,pv,ro,xmap_dxp,TLIVETIME$(N),channel trigger live time
 record(ai, "$(P)$(R)ElapsedTriggerLiveTime") {
     field(DTYP, "asynFloat64")
     field(INP, "$(IO)DxpTriggerLiveTime")
@@ -632,7 +602,6 @@ record(ai, "$(P)$(R)ElapsedTriggerLiveTime") {
 }
 
 # This is really redundant with the MCA_ELAPSED_LIVE parameter
-# % gdatag,pv,ro,xmap_dxp,ELIVETIME$(N),Elapsed live time
 record(ai, "$(P)$(R)ElapsedLiveTime") {
     field(DTYP, "asynFloat64")
     field(INP, "$(IO)MCA_ELAPSED_LIVE")
@@ -647,7 +616,6 @@ record(longin, "$(P)$(R)Triggers") {
     field(SCAN, "I/O Intr")
 }
 
-# % gdatag,pv,ro,xmap_dxp,EVENTS$(N),channel total number of events
 record(longin, "$(P)$(R)Events") {
     field(DTYP, "asynInt32")
     field(INP, "$(IO)DxpEvents")
@@ -669,7 +637,6 @@ record(longin, "$(P)$(R)Underflows") {
     field(SCAN, "I/O Intr")
 }
 
-# % gdatag,pv,ro,xmap_dxp,INPUTCOUNTRATE$(N),channel input count rate
 record(ai, "$(P)$(R)InputCountRate") {
     field(DTYP, "asynFloat64")
     field(INP, "$(IO)DxpInputCountRate")
@@ -678,7 +645,6 @@ record(ai, "$(P)$(R)InputCountRate") {
     field(SCAN, "I/O Intr")
 }
 
-# % gdatag,pv,ro,xmap_dxp,OUTPUTCOUNTRATE$(N),channel output count rate
 record(ai, "$(P)$(R)OutputCountRate") {
     field(DTYP, "asynFloat64")
     field(INP, "$(IO)DxpOutputCountRate")
