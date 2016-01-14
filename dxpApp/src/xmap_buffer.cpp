@@ -186,7 +186,7 @@ int XmapPixel::parse (unsigned short *pixel_buf, unsigned int buflen, ChannelInf
 		return retcode;
 	}
 
-	for (unsigned int ch = 0; ch < sizeof(chinfo); ch++)
+	for (unsigned int ch = 0; ch < MAX_CHANNELS_PER_CARD; ch++)
 	{
 		unsigned int ch_id = chinfo[ch].detector_element;
 
