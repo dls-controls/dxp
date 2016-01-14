@@ -112,6 +112,26 @@ void XmapBufferPlugin::processCallbacks(NDArray* pArray)
         // Todo: decide whether or not to make this copy
         pArray->pAttributeList->copy( ptr_ndarr->pAttributeList );
 
+        int arrayCounter = 0;
+        epicsTimeStamp timeStamp;
+        epicsTimeGetCurrent(&timeStamp);
+        ptr_ndarr->epicsTS = timeStamp;
+        ptr_ndarr->timeStamp = timeStamp.secPastEpoch + timeStamp.nsec / 1.e9;
+        setTimeStamp(&ptr_ndarr->epicsTS);
+        setDoubleParam(NDTimeStamp, ptr_ndarr->timeStamp);
+        setIntegerParam(NDEpicsTSSec, ptr_ndarr->epicsTS.secPastEpoch);
+        setIntegerParam(NDEpicsTSNsec, ptr_ndarr->epicsTS.nsec);
+
+        getIntegerParam(NDArrayCounter, &arrayCounter);
+        // Counter is incremented by the base NDPluginDriver::processCallbacks call
+        // Therefore on the first iteration we do not need to increment it here.
+        if (it != pixelmap.begin()){
+          arrayCounter++;
+          setIntegerParam(NDArrayCounter, arrayCounter);
+        }
+        ptr_ndarr->uniqueId = arrayCounter;
+        setIntegerParam(NDUniqueId, pArray->uniqueId);
+
         retcode = ptr_pix->copy_data(ptr_ndarr);
         if (retcode <= 0) {
             asynPrint(this->pasynUserSelf, ASYN_TRACE_ERROR,
